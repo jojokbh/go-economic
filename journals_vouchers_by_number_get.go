@@ -216,7 +216,7 @@ type JournalsVouchersByNumberGetResponseBody struct {
 }
 
 func (r *JournalsVouchersByNumberGetRequest) URL() (url.URL, error) {
-	return r.client.GetEndpointURL("journals-experimental/{{.journal_number}}/vouchers/{{.accounting_year}}-{{.voucher_number}}", r.PathParams())
+	return r.client.GetEndpointURL("journals/{{.journal_number}}/vouchers/{{.accounting_year}}-{{.voucher_number}}", r.PathParams())
 }
 
 func (r *JournalsVouchersByNumberGetRequest) Do() (JournalsVouchersByNumberGetResponseBody, error) {

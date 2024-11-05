@@ -6,7 +6,7 @@ import (
 	"strconv"
 
 	"github.com/cydev/zero"
-	"github.com/omniboost/go-economic/omitempty"
+	"github.com/jojokbh/go-economic/omitempty"
 )
 
 func (c *Client) NewJournalsVouchersPostRequest() JournalsVouchersPostRequest {
@@ -141,7 +141,7 @@ type JournalsVouchersPostResponseBody []struct {
 }
 
 func (r *JournalsVouchersPostRequest) URL() (url.URL, error) {
-	return r.client.GetEndpointURL("journals-experimental/{{.journal_number}}/vouchers", r.PathParams())
+	return r.client.GetEndpointURL("journals/{{.journal_number}}/vouchers", r.PathParams())
 }
 
 func (r *JournalsVouchersPostRequest) Do() (JournalsVouchersPostResponseBody, error) {

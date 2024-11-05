@@ -110,7 +110,7 @@ type JournalsEntriesGetResponseBody struct {
 }
 
 func (r *JournalsEntriesGetRequest) URL() (url.URL, error) {
-	return r.client.GetEndpointURL("journals-experimental/{{.journal_number}}/entries", r.PathParams())
+	return r.client.GetEndpointURL("journals/{{.journal_number}}/entries", r.PathParams())
 }
 
 func (r *JournalsEntriesGetRequest) Do() (JournalsEntriesGetResponseBody, error) {

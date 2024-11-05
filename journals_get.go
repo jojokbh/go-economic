@@ -129,7 +129,7 @@ type JournalsGetResponseBody struct {
 }
 
 func (r *JournalsGetRequest) URL() (url.URL, error) {
-	return r.client.GetEndpointURL("journals-experimental", r.PathParams())
+	return r.client.GetEndpointURL("journals", r.PathParams())
 }
 
 func (r *JournalsGetRequest) Do() (JournalsGetResponseBody, error) {

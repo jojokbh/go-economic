@@ -4,7 +4,7 @@ import (
 	"os"
 
 	_ "github.com/joho/godotenv/autoload"
-	"github.com/omniboost/go-economic"
+	"github.com/jojokbh/go-economic"
 )
 
 func client() *economic.Client {

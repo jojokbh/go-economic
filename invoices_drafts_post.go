@@ -5,7 +5,7 @@ import (
 	"net/url"
 
 	"github.com/cydev/zero"
-	"github.com/omniboost/go-economic/omitempty"
+	"github.com/jojokbh/go-economic/omitempty"
 )
 
 func (c *Client) NewInvoicesDraftsPostRequest() InvoicesDraftsPostRequest {

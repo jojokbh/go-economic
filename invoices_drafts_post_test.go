@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/omniboost/go-economic"
+	"github.com/jojokbh/go-economic"
 )
 
 func TestInvoicesDraftsPost(t *testing.T) {
