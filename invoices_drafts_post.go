@@ -249,6 +249,7 @@ type InvoiceDraftLine struct {
 	TotalNetAmount       float64                 `json:"totalNetAmount"`
 	MarginInBaseCurrency float64                 `json:"marginInBaseCurrency"`
 	MarginPercentage     float64                 `json:"marginPercentage"`
+	Description          string                  `json:"description"`
 }
 
 type InvoiceDraftDelivery struct {

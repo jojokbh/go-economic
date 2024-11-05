@@ -239,6 +239,7 @@ type QuoteDraftLineProduct struct {
 type QuoteDraftLine struct {
 	LineNumber           int                   `json:"lineNumber"`
 	SortKey              int                   `json:"sortKey"`
+	Description          string                `json:"description"`
 	Unit                 QuoteDraftLineUnit    `json:"unit,omitempty"`
 	Product              QuoteDraftLineProduct `json:"product"`
 	Quantity             float64               `json:"quantity"`
