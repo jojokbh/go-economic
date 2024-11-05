@@ -99,29 +99,33 @@ func (s *Client) NewInvoicesDraftsPostRequestBody() InvoicesDraftsPostRequestBod
 	return InvoicesDraftsPostRequestBody{}
 }
 
+type InvoicesDraftsPostRequestBodyCustomer struct {
+	CustomerNumber int `json:"customerNumber"`
+}
+
+type InvoicesDraftsPostRequestBodyReference struct {
+	Other string `json:"other"`
+}
+
 type InvoicesDraftsPostRequestBody struct {
-	Date                    Date                     `json:"date"`
-	Currency                string                   `json:"currency"`
-	ExchangeRate            float64                  `json:"exchangeRate,omitempty"`
-	NetAmount               float64                  `json:"netAmount"`
-	NetAmountInBaseCurrency float64                  `json:"netAmountInBaseCurrency"`
-	GrossAmount             float64                  `json:"grossAmount"`
-	MarginInBaseCurrency    float64                  `json:"marginInBaseCurrency"`
-	MarginPercentage        float64                  `json:"marginPercentage"`
-	VatAmount               float64                  `json:"vatAmount"`
-	RoundingAmount          float64                  `json:"roundingAmount"`
-	CostPriceInBaseCurrency float64                  `json:"costPriceInBaseCurrency"`
-	PaymentTerms            InvoiceDraftPaymentTerms `json:"paymentTerms,omitempty"`
-	Customer                struct {
-		CustomerNumber int `json:"customerNumber"`
-	} `json:"customer"`
-	Recipient  InvoiceDraftRecipient `json:"recipient,omitempty"`
-	Delivery   InvoiceDraftDelivery  `json:"delivery,omitempty"`
-	References struct {
-		Other string `json:"other"`
-	} `json:"references"`
-	Layout InvoiceDraftLayout `json:"layout,omitempty"`
-	Lines  []InvoiceDraftLine `json:"lines,omitempty"`
+	Date                    Date                                   `json:"date"`
+	Currency                string                                 `json:"currency"`
+	ExchangeRate            float64                                `json:"exchangeRate,omitempty"`
+	NetAmount               float64                                `json:"netAmount"`
+	NetAmountInBaseCurrency float64                                `json:"netAmountInBaseCurrency"`
+	GrossAmount             float64                                `json:"grossAmount"`
+	MarginInBaseCurrency    float64                                `json:"marginInBaseCurrency"`
+	MarginPercentage        float64                                `json:"marginPercentage"`
+	VatAmount               float64                                `json:"vatAmount"`
+	RoundingAmount          float64                                `json:"roundingAmount"`
+	CostPriceInBaseCurrency float64                                `json:"costPriceInBaseCurrency"`
+	PaymentTerms            InvoiceDraftPaymentTerms               `json:"paymentTerms,omitempty"`
+	Customer                InvoicesDraftsPostRequestBodyCustomer  `json:"customer"`
+	Recipient               InvoiceDraftRecipient                  `json:"recipient,omitempty"`
+	Delivery                InvoiceDraftDelivery                   `json:"delivery,omitempty"`
+	References              InvoicesDraftsPostRequestBodyReference `json:"references"`
+	Layout                  InvoiceDraftLayout                     `json:"layout,omitempty"`
+	Lines                   []InvoiceDraftLine                     `json:"lines,omitempty"`
 }
 
 func (r *InvoicesDraftsPostRequest) RequestBody() *InvoicesDraftsPostRequestBody {
@@ -224,23 +228,27 @@ func (i InvoicesDraftsPostRequestBody) MarshalJSON() ([]byte, error) {
 	return omitempty.MarshalJSON(i)
 }
 
+type InvoiceDraftLineUnit struct {
+	UnitNumber int    `json:"unitNumber"`
+	Name       string `json:"name"`
+}
+
+type InvoiceDraftLineProduct struct {
+	ProductNumber string `json:"productNumber"`
+}
+
 type InvoiceDraftLine struct {
-	LineNumber int `json:"lineNumber"`
-	SortKey    int `json:"sortKey"`
-	Unit       struct {
-		UnitNumber int    `json:"unitNumber"`
-		Name       string `json:"name"`
-	} `json:"unit,omitempty"`
-	Product struct {
-		ProductNumber string `json:"productNumber"`
-	} `json:"product"`
-	Quantity             float64 `json:"quantity"`
-	UnitNetPrice         float64 `json:"unitNetPrice"`
-	DiscountPercentage   float64 `json:"discountPercentage"`
-	UnitCostPrice        float64 `json:"unitCostPrice"`
-	TotalNetAmount       float64 `json:"totalNetAmount"`
-	MarginInBaseCurrency float64 `json:"marginInBaseCurrency"`
-	MarginPercentage     float64 `json:"marginPercentage"`
+	LineNumber           int                     `json:"lineNumber"`
+	SortKey              int                     `json:"sortKey"`
+	Unit                 InvoiceDraftLineUnit    `json:"unit,omitempty"`
+	Product              InvoiceDraftLineProduct `json:"product"`
+	Quantity             float64                 `json:"quantity"`
+	UnitNetPrice         float64                 `json:"unitNetPrice"`
+	DiscountPercentage   float64                 `json:"discountPercentage"`
+	UnitCostPrice        float64                 `json:"unitCostPrice"`
+	TotalNetAmount       float64                 `json:"totalNetAmount"`
+	MarginInBaseCurrency float64                 `json:"marginInBaseCurrency"`
+	MarginPercentage     float64                 `json:"marginPercentage"`
 }
 
 type InvoiceDraftDelivery struct {
