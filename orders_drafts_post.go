@@ -119,6 +119,7 @@ type OrdersDraftsPostRequestBody struct {
 	VatAmount               float64                              `json:"vatAmount"`
 	RoundingAmount          float64                              `json:"roundingAmount"`
 	CostPriceInBaseCurrency float64                              `json:"costPriceInBaseCurrency"`
+	Notes                   OrderNotes                           `json:"notes"`
 	PaymentTerms            OrderDraftPaymentTerms               `json:"paymentTerms,omitempty"`
 	Customer                OrdersDraftsPostRequestBodyCustomer  `json:"customer"`
 	Recipient               OrderDraftRecipient                  `json:"recipient,omitempty"`
@@ -284,6 +285,18 @@ type OrderDraftPaymentTerms struct {
 	DaysOfCredit       int    `json:"daysOfCredit,omitempty"`
 	Name               string `json:"name,omitempty"`
 	PaymentTermsType   string `json:"paymentTermsType,omitempty"`
+}
+
+/*
+notes	object							Notes on the quote.
+notes.heading	string			250				The quote heading. Usually displayed at the top of the quote.
+notes.textLine1	string			1000				The first line of supplementary text on the quote. This is usually displayed right under the heading in a smaller font.
+notes.textLine2	string			1000				The second line of supplementary text in the notes on the quote. This is usually displayed as a footer on the quote.
+*/
+type OrderNotes struct {
+	Heading   string `json:"heading,omitempty"`
+	TextLine1 string `json:"textLine1,omitempty"`
+	TextLine2 string `json:"textLine2,omitempty"`
 }
 
 func (pt OrderDraftPaymentTerms) IsEmpty() bool {
