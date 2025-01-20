@@ -119,6 +119,7 @@ type InvoicesDraftsPostRequestBody struct {
 	VatAmount               float64                                `json:"vatAmount"`
 	RoundingAmount          float64                                `json:"roundingAmount"`
 	CostPriceInBaseCurrency float64                                `json:"costPriceInBaseCurrency"`
+	Notes                   OrderNotes                             `json:"notes,omitempty"`
 	PaymentTerms            InvoiceDraftPaymentTerms               `json:"paymentTerms,omitempty"`
 	Customer                InvoicesDraftsPostRequestBodyCustomer  `json:"customer"`
 	Recipient               InvoiceDraftRecipient                  `json:"recipient,omitempty"`
